@@ -13,9 +13,11 @@ using namespace std;
 
 vector<vector<double> > summarize(vector<double> v) {
     //outer vector that will be returned by the function
-    vector<vector<double> > outer;
+    vector<vector<double> > outer(0);
     
+    int total = 0;
     double smallest = v[0];
+    double largest = v[0];
     const double epsilon = 0.00001;
     int count_of_value = 0;
     
@@ -25,6 +27,13 @@ vector<vector<double> > summarize(vector<double> v) {
             smallest = v[i];
         }
     }
+    //finds the largest value in the vector v.
+    for (int i = 0; i < v.size(); ++i) {
+        if (v[i] > largest) {
+            largest = v[i];
+        }
+    }
+    
     
     for (int j = 0; j < v.size(); ++j) {
         
@@ -47,6 +56,7 @@ vector<vector<double> > summarize(vector<double> v) {
         outer.push_back(inner);
         
         double old_smallest = smallest;
+        total += count_of_value;
         count_of_value = 0;
         
         //finds any value in v that is larger than the last smallest value
@@ -70,6 +80,9 @@ vector<vector<double> > summarize(vector<double> v) {
                     }
                 }
             }
+        }
+        if (total == v.size()) {
+            return outer;
         }
         
     }
