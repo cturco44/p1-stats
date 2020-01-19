@@ -26,6 +26,7 @@ void test_sum_small_data_set();
 void test_summarize();
 bool check_vectors(vector<double> v1, vector<double> v2);
 void test_count();
+void test_sum();
 
 // Add prototypes for you test functions here.
 
@@ -34,11 +35,26 @@ int main()
   //test_sum_small_data_set();
   // Call your test functions here
     //test_summarize();
-    test_count();
+    //test_count();
+    test_sum();
     
     
 
   return 0;
+}
+
+void test_sum() {
+    const double epsilon = 0.00001;
+    vector<double> v(3);
+    v[0] = 3.2;
+    v[1] = 4.6;
+    v[2] = 5;
+    
+    double sum1 = sum(v);
+    assert((abs(sum1 - 12.8) < epsilon));
+    
+    cout << "assert tests passed" << endl;
+    
 }
 void test_count() {
     vector<double> v(3);

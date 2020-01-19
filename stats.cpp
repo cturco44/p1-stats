@@ -97,8 +97,13 @@ int count(vector<double> v) {
 }
 
 double sum(vector<double> v) {
-  assert(false);
+    double sum = 0;
+    for (int i = 0; i < v.size(); ++i) {
+        sum += v[i];
+    }
+    return sum;
 }
+
 
 double mean(vector<double> v) {
   assert(false);
