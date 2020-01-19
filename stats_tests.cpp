@@ -19,18 +19,82 @@
 #include <iostream>
 #include <cassert>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 void test_sum_small_data_set();
+void test_summarize();
+bool check_vectors(vector<double> v1, vector<double> v2);
 
 // Add prototypes for you test functions here.
 
 int main()
 {
-  test_sum_small_data_set();
+  //test_sum_small_data_set();
   // Call your test functions here
+    test_summarize();
+    
+    
 
   return 0;
+}
+bool check_vectors(vector<double> v1, vector<double> v2) {
+    bool same = false;
+    const double epsilon = 0.00001;
+    
+    if ((abs(v1[0]-v2[0]) < epsilon) && (abs(v1[1] - v2[1])) < epsilon) {
+        same = true;
+    }
+    
+    
+    return same;
+}
+
+void test_summarize() {
+    vector<double> test1;
+    
+    test1.push_back(5.3);
+    test1.push_back(3);
+    test1.push_back(8);
+    test1.push_back(5.3);
+    test1.push_back(5.47);
+    test1.push_back(3.8);
+    test1.push_back(8);
+    
+    vector<vector <double> > bigtest1;
+    
+    bigtest1 = summarize(test1);
+    vector<double> vector_at_0(2);
+    vector_at_0[0] = 3;
+    vector_at_0[1] = 1;
+    
+    vector<double> vector_at_1(2);
+    vector_at_0[0] = 3.8;
+    vector_at_0[1] = 1;
+        
+    vector<double> vector_at_2(2);
+    vector_at_0[0] = 5.3;
+    vector_at_0[1] = 2;
+    
+    vector<double> vector_at_3(2);
+    vector_at_0[0] = 5.47;
+    vector_at_0[1] = 1;
+    
+    vector<double> vector_at_4(2);
+    vector_at_0[0] = 8;
+    vector_at_0[1] = 2;
+    
+    cout << "Checking vectors" << endl;
+    assert(check_vectors(bigtest1[0], vector_at_0));
+    assert(check_vectors(bigtest1[1], vector_at_1));
+    assert(check_vectors(bigtest1[2], vector_at_2));
+    assert(check_vectors(bigtest1[3], vector_at_3));
+    assert(check_vectors(bigtest1[4], vector_at_4));
+    
+    cout << "All vector assert statements passed" << endl;
+    
+    
+    
 }
 
 void test_sum_small_data_set()
