@@ -46,27 +46,32 @@ vector<vector<double> > summarize(vector<double> v) {
         
         outer.push_back(inner);
         
-        double potential = smallest;
+        double old_smallest = smallest;
         count_of_value = 0;
         
-        //finds any value in v that is larger than the smallest value
-        
-        for (int g = 0; g < v.size(); ++g) {
-            
-            if (v[g] - smallest > epsilon) {
-                potential = v[g];
+        //finds any value in v that is larger than the last smallest value
+        for (int k = 0; k < v.size(); k++) {
+            if ((abs(v[k] - old_smallest) > epsilon) && (v[k] > old_smallest)) {
+                smallest = v[k];
             }
-        }
-        
-        for (int k = 0; k < v.size(); ++k) {
             
-            if ((abs(v[k] - potential) < epsilon) && ((potential - smallest) < epsilon)) {
-                if (potential > smallest) {
-                    potential = v[k];
+        }
+        /* This for loop finds the next smallest value by making sure v[m]
+         satisfies the following 3 conditions:
+            1. v[k] is a different number than the old_smallest
+            2. v[k] is greater than the old_smallest
+            3. v[k] is less than smallest
+         */
+        for (int m = 0; m < v.size(); ++m) {
+            if (abs(v[m] - old_smallest) > epsilon) {
+                if (v[m] > old_smallest) {
+                    if (v[m] < smallest) {
+                        smallest = v[m];
+                    }
                 }
             }
         }
-        smallest = potential;
+        
     }
    
     

@@ -69,20 +69,20 @@ void test_summarize() {
     vector_at_0[1] = 1;
     
     vector<double> vector_at_1(2);
-    vector_at_0[0] = 3.8;
-    vector_at_0[1] = 1;
+    vector_at_1[0] = 3.8;
+    vector_at_1[1] = 1;
         
     vector<double> vector_at_2(2);
-    vector_at_0[0] = 5.3;
-    vector_at_0[1] = 2;
+    vector_at_2[0] = 5.3;
+    vector_at_2[1] = 2;
     
     vector<double> vector_at_3(2);
-    vector_at_0[0] = 5.47;
-    vector_at_0[1] = 1;
+    vector_at_3[0] = 5.47;
+    vector_at_3[1] = 1;
     
     vector<double> vector_at_4(2);
-    vector_at_0[0] = 8;
-    vector_at_0[1] = 2;
+    vector_at_4[0] = 8;
+    vector_at_4[1] = 2;
     
     cout << "Checking vectors" << endl;
     assert(check_vectors(bigtest1[0], vector_at_0));
