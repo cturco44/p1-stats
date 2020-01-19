@@ -38,7 +38,8 @@ int main()
   // Call your test functions here
     //test_summarize();
     //test_count();
-    test_sum();
+    //test_sum();
+    test_mean();
     
     
 
@@ -46,12 +47,14 @@ int main()
 }
 
 void test_mean() {
+    const double epsilon = 0.00001;
     vector<double> v(3);
     v[0] = 3.2;
     v[1] = 4.6;
     v[2] = 5;
     
-    
+    assert((mean(v) - 4.26666) < epsilon);
+    cout << "mean statement passed" << endl;
 }
 
 void test_sum() {
