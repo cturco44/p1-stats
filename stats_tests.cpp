@@ -27,6 +27,8 @@ void test_summarize();
 bool check_vectors(vector<double> v1, vector<double> v2);
 void test_count();
 void test_sum();
+void test_mean();
+
 
 // Add prototypes for you test functions here.
 
@@ -41,6 +43,15 @@ int main()
     
 
   return 0;
+}
+
+void test_mean() {
+    vector<double> v(3);
+    v[0] = 3.2;
+    v[1] = 4.6;
+    v[2] = 5;
+    
+    
 }
 
 void test_sum() {

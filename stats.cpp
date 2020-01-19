@@ -106,7 +106,10 @@ double sum(vector<double> v) {
 
 
 double mean(vector<double> v) {
-  assert(false);
+    double mean;
+    mean = sum(v)/(v.size());
+    return mean;
+    
 }
 
 double median(vector<double> v) {
