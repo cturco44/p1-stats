@@ -92,7 +92,8 @@ vector<vector<double> > summarize(vector<double> v) {
 }
 
 int count(vector<double> v) {
-  assert(false);
+    int size = static_cast<int>(v.size());
+    return size;
 }
 
 double sum(vector<double> v) {

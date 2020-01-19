@@ -25,6 +25,7 @@ using namespace std;
 void test_sum_small_data_set();
 void test_summarize();
 bool check_vectors(vector<double> v1, vector<double> v2);
+void test_count();
 
 // Add prototypes for you test functions here.
 
@@ -32,11 +33,25 @@ int main()
 {
   //test_sum_small_data_set();
   // Call your test functions here
-    test_summarize();
+    //test_summarize();
+    test_count();
     
     
 
   return 0;
+}
+void test_count() {
+    vector<double> v(3);
+    v[1] = 3.2;
+    v[2] = 4.6;
+    v[3] = 5;
+    
+    cout << "testing count" << endl;
+    assert(count(v) == 3);
+    
+    cout << "assert statements passed" << endl;
+    
+    
 }
 bool check_vectors(vector<double> v1, vector<double> v2) {
     bool same = false;
