@@ -27,9 +27,10 @@ int main() {
     v = extract_column(filename, column_name);
     
     vector<vector<double> > summary = summarize(v);
+    int summary_size = static_cast<int>(summary.size());
     cout << "Summary (value: frequency)" << endl;
     
-    for (int i = 0; i < summary.size(); ++i) {
+    for (int i = 0; i < summary_size; ++i) {
         vector<double> holder = summary[i];
         cout << holder[0] << ": " << holder[1] << endl;
         
