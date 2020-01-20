@@ -42,7 +42,7 @@ void test_percentile();
 int main()
 {
     
-    test_sum_small_data_set();
+    //test_sum_small_data_set();
     test_summarize();
     test_count();
     test_sum();
@@ -53,6 +53,7 @@ int main()
     test_max();
     test_stdev();
     test_percentile();
+     
     
   return 0;
 }

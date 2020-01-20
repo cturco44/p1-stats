@@ -15,88 +15,75 @@ using namespace std;
 
 vector<vector<double> > summarize(vector<double> v) {
     //outer vector that will be returned by the function
-    vector<vector<double> > outer(0);
+    vector<vector<double> > outer;
     
-    int total = 0;
-    double smallest = v[0];
-    double largest = v[0];
+    double maximum = max(v);
     const double epsilon = 0.00001;
-    int count_of_value = 0;
-    
-    //finds the smallest value in the vector v.
-    for (int i = 0; i < v.size(); ++i) {
-        if (v[i] < smallest) {
-            smallest = v[i];
-        }
-    }
-    //finds the largest value in the vector v.
-    for (int i = 0; i < v.size(); ++i) {
-        if (v[i] > largest) {
-            largest = v[i];
-        }
-    }
+    int frequency = 0;
+    int total_frequency = 0;
+    int size = count(v);
+    sort(v);
     
     
-    for (int j = 0; j < v.size(); ++j) {
-        
-        for (int i = 0; i < v.size(); ++i) {
-               
-               /* checks if values are equal (must use epsilon
-                * because double comparison. If they are equal
-                * count (frequency) increases by one.
-                */
-               if (abs(smallest - v[i]) < epsilon) {
-                   ++count_of_value;
-               }
-               
-               
-           }
-        /* creates inner vector and fills it with
-         * (value, frequency) pairs. */
-        vector<double> inner(2);
-        inner[0] = smallest;
-        inner[1] = static_cast<double>(count_of_value);
-        
-        outer.push_back(inner);
-        
-        /* old_smallest value is set to equal the smallest value
-         * before smallest is changed. Total is updated so that the
-         * function will know when to terminate
-         */
-        double old_smallest = smallest;
-        total += count_of_value;
-        count_of_value = 0;
-        
-        //finds any value in v that is larger than the last smallest value
-        for (int k = 0; k < v.size(); k++) {
-            if ((abs(v[k] - old_smallest) > epsilon) && (v[k] > old_smallest)) {
-                smallest = v[k];
-            }
-            
+    double num_holder = v[0];
+    int i = 0;
+    
+    for (int j = 0; j < size; ++j) {
+        vector<double> holder(2);
+        while(abs(v[i] - num_holder) < epsilon) {
+              ++frequency;
+              ++i;
         }
-        /* This for loop finds the next smallest value by making sure v[m]
-         * satisfies the following 3 conditions:
-            1. v[k] is a different number than the old_smallest
-            2. v[k] is greater than the old_smallest
-            3. v[k] is less than smallest
-         */
-        for (int m = 0; m < v.size(); ++m) {
-            if (abs(v[m] - old_smallest) > epsilon) {
-                if (v[m] > old_smallest) {
-                    if (v[m] < smallest) {
-                        smallest = v[m];
-                    }
-                }
-            }
-        }
-        /* If total is equal to the size of the vector, the function is done,
-         * so it returns the vector outer.
-         */
-        if (total == v.size()) {
+        holder[0] = num_holder;
+        holder[1] = frequency;
+        frequency = 0;
+        total_frequency += frequency;
+        outer.push_back(holder);
+        if (abs(holder[0] - maximum) < epsilon) {
             return outer;
         }
         
+        vector<double> unused;
+        for (int k = 0; k < size; ++k) {
+            
+            if ((abs(v[k] - num_holder) > epsilon) && v[k] > num_holder) {
+                unused.push_back(v[k]);
+            }
+        }
+        
+        num_holder = min(unused);
+        
+        
     }
+    
+    
+    
+    
+    /*while (total_frequency != size) {
+        vector<double> holder(2);
+         for (int i = 0; i < size; ++i) {
+               if (abs(v[i] - num_holder) < epsilon) {
+                   ++frequency;
+               }
+           }
+        holder[0] = num_holder;
+        holder[1] = frequency;
+        total_frequency += frequency;
+        outer.push_back(holder);
+        
+        int j = 0;
+        while(abs(old_holder - num_holder) < epsilon) {
+            
+            if((abs(v[j] - num_holder) > epsilon) && v[j] > num_holder) {
+                num_holder = v[j];
+            }
+            ++j;
+        }
+        old_holder = v[j - 1];
+    }
+     */
+   
+    
     return outer;
 }
 
