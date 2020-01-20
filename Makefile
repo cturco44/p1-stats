@@ -67,4 +67,4 @@ sync :
 --exclude '.git*' \
 --filter=':- .gitignore' \
 ../p1-stats/ \
-awdeorio@login.engin.umich.edu:p1-stats-copy/
+cturco@login.engin.umich.edu:p1-stats-copy/
