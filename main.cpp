@@ -35,7 +35,7 @@ int main() {
         
     }
     
-    cout << endl << "count = " << v.size() << endl;
+    cout << endl << "count = " << count(v) << endl;
     cout << "sum = " << sum(v) << endl;
     cout << "mean = " << mean(v) << endl;
     cout << "stdev = " << stdev(v) << endl;
@@ -50,13 +50,5 @@ int main() {
     cout << " 50th percentile = " << percentile(v, 0.5) << endl;
     cout << " 75th percentile = " << percentile(v, 0.75) << endl;
     cout << "100th percentile = " << percentile(v, 1) << endl;
-    
-    
-    
-    
-    
-    
-    
-    
     
 }
