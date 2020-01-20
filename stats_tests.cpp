@@ -28,6 +28,7 @@ bool check_vectors(vector<double> v1, vector<double> v2);
 void test_count();
 void test_sum();
 void test_mean();
+void test_median();
 
 
 // Add prototypes for you test functions here.
@@ -36,16 +37,18 @@ int main()
 {
   //test_sum_small_data_set();
   // Call your test functions here
-    //test_summarize();
+    test_summarize();
     //test_count();
     //test_sum();
-    test_mean();
+    //test_mean();
     
     
 
   return 0;
 }
-
+void test_median() {
+    
+}
 void test_mean() {
     const double epsilon = 0.00001;
     vector<double> v(3);
@@ -107,6 +110,8 @@ void test_summarize() {
     test1.push_back(8);
     
     vector<vector <double> > bigtest1;
+    
+    
     
     bigtest1 = summarize(test1);
     vector<double> vector_at_0(2);
