@@ -37,16 +37,30 @@ int main()
 {
   //test_sum_small_data_set();
   // Call your test functions here
-    test_summarize();
+    //test_summarize();
     //test_count();
     //test_sum();
     //test_mean();
-    
+    test_median();
     
 
   return 0;
 }
 void test_median() {
+    const double epsilon = 0.00001;
+    vector<double> test1;
+    
+    test1.push_back(5.3);
+    test1.push_back(3);
+    test1.push_back(8);
+    test1.push_back(5.3);
+    test1.push_back(5.47);
+    test1.push_back(3.8);
+    test1.push_back(8);
+    
+    assert((median(test1) - 5.3 < epsilon));
+    cout << "median assert passed" << endl;
+    
     
 }
 void test_mean() {
