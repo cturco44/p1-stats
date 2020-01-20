@@ -151,7 +151,28 @@ double median(vector<double> v) {
 }
 
 double mode(vector<double> v) {
-  assert(false);
+    int old_number = 0;
+    int highest_amount = 0;
+    vector<vector<double> > holder = summarize(v);
+    
+    for (int i = 0; i < holder.size(); ++i) {
+        vector<double> temp = holder[i];
+        int number_of_value = static_cast<int>(temp[1]);
+        
+        if (number_of_value > old_number) {
+            highest_amount = number_of_value;
+            old_number = number_of_value;
+        }
+        
+    }
+    for (int j = 0; j < holder.size(); ++j) {
+        vector<double> temp2 = holder[j];
+        if (temp2[1] == highest_amount) {
+            return temp2[0];
+        }
+        
+    }
+    assert(false);
 }
 
 double min(vector<double> v) {

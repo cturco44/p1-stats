@@ -29,6 +29,7 @@ void test_count();
 void test_sum();
 void test_mean();
 void test_median();
+void test_mode();
 
 
 // Add prototypes for you test functions here.
@@ -41,10 +42,28 @@ int main()
     //test_count();
     //test_sum();
     //test_mean();
-    test_median();
-    
+    //test_median();
+    test_mode();
 
   return 0;
+}
+void test_mode() {
+    const double epsilon = 0.00001;
+    vector<double> test1;
+    
+    test1.push_back(5.3);
+    test1.push_back(3);
+    test1.push_back(8);
+    test1.push_back(5.3);
+    test1.push_back(5.47);
+    test1.push_back(3.8);
+    test1.push_back(8);
+    
+    double mode_value = mode(test1);
+    assert(abs(mode_value - 5.3) < epsilon);
+    cout << "mode is " << mode_value << endl;
+    cout << "mode statement passed" << endl;
+    
 }
 void test_median() {
     const double epsilon = 0.00001;
