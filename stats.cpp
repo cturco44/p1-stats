@@ -115,45 +115,20 @@ double mean(vector<double> v) {
 
 double median(vector<double> v) {
     
-    double smallest = v[0];
-    const double epsilon = 0.00001;
-    
     vector<double>sorted;
+    vector<vector<double> > holder = summarize(v);
     
-    for (int i = 0; i < v.size(); ++i) {
-        if (v[i] < smallest) {
-            smallest = v[i];
-        }
-    }
-    
-    sorted.push_back(smallest);
-    double old_smallest = smallest;
-    
-    int count = 0;
-    while(count < v.size()) {
-        for (int k = 0; k < v.size(); k++) {
-            if ((abs(v[k] - old_smallest) > epsilon) && (v[k] > old_smallest)) {
-                smallest = v[k];
-            }
+    for (int i = 0; i < holder.size(); ++i) {
+        vector<double> temp = holder[i];
+        int number_of_value = static_cast<int>(temp[1]);
+        for (int j = 0; j < number_of_value; ++j) {
+            sorted.push_back(temp[0]);
             
         }
-        
-        for (int m = 0; m < v.size(); ++m) {
-            if (abs(v[m] - old_smallest) > epsilon) {
-                if (v[m] > old_smallest) {
-                    if (v[m] < smallest) {
-                        smallest = v[m];
-                        
-                        
-                    }
-                }
-            }
-        }
-        sorted.push_back(smallest);
-        old_smallest = smallest;
-        ++count;
-        
     }
+    
+    
+    
     
     for (int j = 0; j < v.size(); ++j) {
         cout << sorted[j] << ", ";
