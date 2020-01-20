@@ -114,7 +114,7 @@ double mean(vector<double> v) {
 }
 
 double median(vector<double> v) {
-    
+    int size = static_cast<int>(v.size());
     vector<double>sorted;
     vector<vector<double> > holder = summarize(v);
     
@@ -127,16 +127,26 @@ double median(vector<double> v) {
         }
     }
     
-    
-    
-    
-    for (int j = 0; j < v.size(); ++j) {
-        cout << sorted[j] << ", ";
+    if ((size % 2) == 0) {
+        //even
+        int numbers_in_front = ((size - 2)/2);
+        
+        double value1 = v[numbers_in_front];
+        double value2 = v[numbers_in_front + 1];
+        
+        vector<double> median_values(2);
+        median_values[0] = value1;
+        median_values[1] = value2;
+        
+        return mean(median_values);
     }
-    
-   
-    
-    return 5.0;
+    else {
+        //odd
+        int numbers_in_front = ((size - 1)/2);
+        
+        return v[numbers_in_front];
+    }
+
     
 }
 
