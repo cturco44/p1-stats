@@ -41,17 +41,17 @@ void test_percentile();
 
 int main()
 {
-  //test_sum_small_data_set();
-  // Call your test functions here
-    //test_summarize();
-    //test_count();
-    //test_sum();
-    //test_mean();
-    //test_median();
-    //test_mode();
-    //test_min();
-    //test_max();
-    //test_stdev();
+    
+    test_sum_small_data_set();
+    test_summarize();
+    test_count();
+    test_sum();
+    test_mean();
+    test_median();
+    test_mode();
+    test_min();
+    test_max();
+    test_stdev();
     test_percentile();
     
   return 0;
@@ -156,6 +156,17 @@ void test_median() {
     test1.push_back(3.8);
     test1.push_back(8);
     
+    vector<double> test2;
+    test2.push_back(1);
+    test2.push_back(5);
+    test2.push_back(7);
+    test2.push_back(15);
+    test2.push_back(3);
+    test2.push_back(90);
+    
+    double med2 = median(test2);
+    assert((med2 - 6) < epsilon);
+    
     double med = median(test1);
     assert((med - 5.3) < epsilon);
     cout << "median assert passed" << endl;
@@ -253,6 +264,8 @@ void test_summarize() {
     assert(check_vectors(bigtest1[2], vector_at_2));
     assert(check_vectors(bigtest1[3], vector_at_3));
     assert(check_vectors(bigtest1[4], vector_at_4));
+    
+    assert(bigtest1.size() == 5);
     
     cout << "All vector assert statements passed" << endl;
     

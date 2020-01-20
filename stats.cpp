@@ -159,8 +159,8 @@ double median(vector<double> v) {
         int numbers_in_front = ((size - 2)/2);
         
         // The two middle values are stored in a vector
-        double value1 = v[numbers_in_front];
-        double value2 = v[numbers_in_front + 1];
+        double value1 = sorted[numbers_in_front];
+        double value2 = sorted[numbers_in_front + 1];
         
         vector<double> median_values(2);
         median_values[0] = value1;
@@ -173,7 +173,7 @@ double median(vector<double> v) {
     else {
         int numbers_in_front = ((size - 1)/2);
         
-        return v[numbers_in_front];
+        return sorted[numbers_in_front];
     }
 
     
