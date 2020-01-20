@@ -2,6 +2,7 @@
 #include "stats.h"
 #include <cassert>
 #include <vector>
+#include <iostream>
 
 //added
 #include <cmath>
@@ -113,44 +114,52 @@ double mean(vector<double> v) {
 }
 
 double median(vector<double> v) {
-    vector<vector<double> > summarized = summarize(v);
-    int size = static_cast<int>(v.size());
     
-    vector <double> sorted;
+    double smallest = v[0];
+    const double epsilon = 0.00001;
     
-    for (int i = 0; i < size; ++i) {
-        vector<double> holder = summarized[i];
-        
-        for (int j = 0; j < holder[i]; ++j) {
-            sorted.push_back(holder[0]);
+    vector<double>sorted;
+    
+    for (int i = 0; i < v.size(); ++i) {
+        if (v[i] < smallest) {
+            smallest = v[i];
+        }
+    }
+    
+    sorted.push_back(smallest);
+    double old_smallest = smallest;
+    
+    int count = 0;
+    while(count < v.size()) {
+        for (int k = 0; k < v.size(); k++) {
+            if ((abs(v[k] - old_smallest) > epsilon) && (v[k] > old_smallest)) {
+                smallest = v[k];
+            }
+            
         }
         
-    }
-  
-    if (size % 2 == 0) {
-        //even
-        int numbers_in_front = ((size - 2)/2);
-        
-        double value1 = sorted[numbers_in_front];
-        double value2 = sorted[numbers_in_front + 1];
-        
-        vector<double> median_values(2);
-        median_values[0] = value1;
-        median_values[1] = value2;
-        
-        return mean(median_values);
-
-        
+        for (int m = 0; m < v.size(); ++m) {
+            if (abs(v[m] - old_smallest) > epsilon) {
+                if (v[m] > old_smallest) {
+                    if (v[m] < smallest) {
+                        smallest = v[m];
+                        
+                        
+                    }
+                }
+            }
+        }
+        sorted.push_back(smallest);
+        old_smallest = smallest;
+        ++count;
         
     }
-    else {
-        //odd
-        int numbers_in_front = ((size - 1)/2);
-        
-        return sorted[numbers_in_front];
-
+    
+    for (int j = 0; j < v.size(); ++j) {
+        cout << sorted[j] << ", ";
     }
-     
+    
+   
     
     return 5.0;
     
