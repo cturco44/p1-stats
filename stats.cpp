@@ -191,9 +191,22 @@ double max(vector<double> v) {
 }
 
 double stdev(vector<double> v) {
-  assert(false);
+    double average = mean(v);
+    int degrees_freedom = static_cast<int>(v.size()) - 1;
+    double sum_of_squares = 0;
+    double std_dev = 0;
+    
+    for (int i = 0; i < v.size(); ++i) {
+        double square1 = pow((v[i] - average), 2);
+        sum_of_squares += square1;
+    }
+    std_dev = sqrt(sum_of_squares / degrees_freedom);
+    
+    return std_dev;
+    
 }
 
 double percentile(vector<double> v, double p) {
+    
   assert(false);
 }

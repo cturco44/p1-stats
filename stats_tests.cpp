@@ -33,6 +33,7 @@ void test_median();
 void test_mode();
 void test_min();
 void test_max();
+void test_stdev();
 
 
 // Add prototypes for you test functions here.
@@ -48,8 +49,24 @@ int main()
     //test_median();
     //test_mode();
     //test_min();
-    test_max();
+    //test_max();
+    test_stdev();
+    
   return 0;
+}
+void test_stdev() {
+    vector<double> test1;
+    
+    test1.push_back(5.3);
+    test1.push_back(3);
+    test1.push_back(8);
+    test1.push_back(5.3);
+    test1.push_back(5.47);
+    test1.push_back(3.8);
+    test1.push_back(8);
+    
+    assert(value_same(stdev(test1), 1.901812));
+    cout << "stdev asserts passed" << endl;
 }
 bool value_same(double a, double b) {
     const double epsilon = 0.00001;
