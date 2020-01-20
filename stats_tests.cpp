@@ -34,6 +34,7 @@ void test_mode();
 void test_min();
 void test_max();
 void test_stdev();
+void test_percentile();
 
 
 // Add prototypes for you test functions here.
@@ -50,9 +51,26 @@ int main()
     //test_mode();
     //test_min();
     //test_max();
-    test_stdev();
+    //test_stdev();
+    test_percentile();
     
   return 0;
+}
+void test_percentile() {
+    vector<double> test1;
+    
+    test1.push_back(20);
+    test1.push_back(15);
+    test1.push_back(35);
+    test1.push_back(40);
+    test1.push_back(50);
+    
+    double percentile1 = percentile(test1, 0.4);
+    
+    assert(value_same(percentile1 , 29.0));
+    cout << percentile1 << endl;
+    cout << "percentile passed" << endl;
+   
 }
 void test_stdev() {
     vector<double> test1;

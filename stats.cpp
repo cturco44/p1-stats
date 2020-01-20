@@ -207,6 +207,15 @@ double stdev(vector<double> v) {
 }
 
 double percentile(vector<double> v, double p) {
+    sort(v);
+    double n = (p * (v.size() - 1)) + 1;
+    double k = floor(n);
+    double d = n - k;
     
-  assert(false);
+    double vk = v[k - 1];
+    double vk1 = v[k];
+    
+    double answer = vk + (d * (vk1 - vk));
+    
+    return answer;
 }
