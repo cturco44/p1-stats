@@ -56,34 +56,6 @@ vector<vector<double> > summarize(vector<double> v) {
         
     }
     
-    
-    
-    
-    /*while (total_frequency != size) {
-        vector<double> holder(2);
-         for (int i = 0; i < size; ++i) {
-               if (abs(v[i] - num_holder) < epsilon) {
-                   ++frequency;
-               }
-           }
-        holder[0] = num_holder;
-        holder[1] = frequency;
-        total_frequency += frequency;
-        outer.push_back(holder);
-        
-        int j = 0;
-        while(abs(old_holder - num_holder) < epsilon) {
-            
-            if((abs(v[j] - num_holder) > epsilon) && v[j] > num_holder) {
-                num_holder = v[j];
-            }
-            ++j;
-        }
-        old_holder = v[j - 1];
-    }
-     */
-   
-    
     return outer;
 }
 
