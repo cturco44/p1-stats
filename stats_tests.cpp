@@ -58,7 +58,8 @@ void test_median() {
     test1.push_back(3.8);
     test1.push_back(8);
     
-    assert((median(test1) - 5.3 < epsilon));
+    double med = median(test1);
+    assert((med - 5.3) < epsilon);
     cout << "median assert passed" << endl;
     
     
