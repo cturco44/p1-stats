@@ -22,6 +22,7 @@
 #include <cmath>
 using namespace std;
 
+bool value_same(double a, double b);
 void test_sum_small_data_set();
 void test_summarize();
 bool check_vectors(vector<double> v1, vector<double> v2);
@@ -30,6 +31,8 @@ void test_sum();
 void test_mean();
 void test_median();
 void test_mode();
+void test_min();
+void test_max();
 
 
 // Add prototypes for you test functions here.
@@ -43,9 +46,50 @@ int main()
     //test_sum();
     //test_mean();
     //test_median();
-    test_mode();
-
+    //test_mode();
+    //test_min();
+    test_max();
   return 0;
+}
+bool value_same(double a, double b) {
+    const double epsilon = 0.00001;
+    if(abs(a - b) < epsilon) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+void test_max() {
+    vector<double> test1;
+    
+    test1.push_back(5.3);
+    test1.push_back(3);
+    test1.push_back(8);
+    test1.push_back(5.3);
+    test1.push_back(5.47);
+    test1.push_back(3.8);
+    test1.push_back(8);
+    
+    assert(value_same(max(test1), 8.0));
+    cout << "assert max passed" << endl;
+    
+    
+}
+void test_min() {
+    const double epsilon = 0.00001;
+    vector<double> test1;
+    
+    test1.push_back(5.3);
+    test1.push_back(3);
+    test1.push_back(8);
+    test1.push_back(5.3);
+    test1.push_back(5.47);
+    test1.push_back(3.8);
+    test1.push_back(8);
+    
+    assert(abs(min(test1) - 3.0) < epsilon);
+    cout << "assert min passed" << endl;
 }
 void test_mode() {
     const double epsilon = 0.00001;

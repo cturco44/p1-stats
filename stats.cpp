@@ -9,6 +9,7 @@
 #include <iomanip>
 #include <limits>
 #include <string>
+#include "p1_library.h"
 
 using namespace std;
 
@@ -176,11 +177,17 @@ double mode(vector<double> v) {
 }
 
 double min(vector<double> v) {
-  assert(false);
+    sort(v);
+    
+    return v[0];
 }
 
 double max(vector<double> v) {
-  assert(false);
+    sort(v);
+    int size = static_cast<int>(v.size());
+    
+    return v[size - 1];
+    
 }
 
 double stdev(vector<double> v) {
