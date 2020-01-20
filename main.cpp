@@ -31,10 +31,8 @@ int main() {
     
     for (int i = 0; i < summary.size(); ++i) {
         vector<double> holder = summary[i];
+        cout << holder[0] << ": " << holder[1] << endl;
         
-        for (int j = 0; j < 2; ++j) {
-            cout << holder[0] << ": " << holder[1] << endl;
-        }
     }
     
     cout << endl << "count = " << v.size() << endl;
