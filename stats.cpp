@@ -68,11 +68,12 @@ int count(vector<double> v) {
 
 double sum(vector<double> v) {
     double sum = 0;
+    double size = count(v);
     
     /* A for loop is used to iterate over vector and increase sum by each value
      * in the vector
      */
-    for (int i = 0; i < v.size(); ++i) {
+    for (int i = 0; i < size; ++i) {
         sum += v[i];
     }
     return sum;
@@ -90,13 +91,14 @@ double mean(vector<double> v) {
 
 double median(vector<double> v) {
     int size = static_cast<int>(v.size());
+    
     vector<double>sorted;
     
     //Vector returned from summarize is saved into holder.
     vector<vector<double> > holder = summarize(v);
+    int holder_size = static_cast<int>(holder.size());
     
-    
-    for (int i = 0; i < holder.size(); ++i) {
+    for (int i = 0; i < holder_size; ++i) {
         //The vector at [i] is saved into temp
         vector<double> temp = holder[i];
         int number_of_value = static_cast<int>(temp[1]);
@@ -142,11 +144,12 @@ double mode(vector<double> v) {
     int old_number = 0;
     int highest_amount = 0;
     vector<vector<double> > holder = summarize(v);
+    int holder_size = static_cast<int>(holder.size());
     
     /* For loop iterates over frequency values in holder to find which one is
      * the largest. This value is saved to highest_amount.
      */
-    for (int i = 0; i < holder.size(); ++i) {
+    for (int i = 0; i < holder_size; ++i) {
         vector<double> temp = holder[i];
         int number_of_value = static_cast<int>(temp[1]);
         
@@ -157,7 +160,7 @@ double mode(vector<double> v) {
         
     }
     // Finds the smallest value with a frequency of highest_amount
-    for (int j = 0; j < holder.size(); ++j) {
+    for (int j = 0; j < holder_size; ++j) {
         vector<double> temp2 = holder[j];
         if (temp2[1] == highest_amount) {
             return temp2[0];
@@ -188,11 +191,11 @@ double stdev(vector<double> v) {
     int degrees_freedom = static_cast<int>(v.size()) - 1;
     double sum_of_squares = 0;
     double std_dev = 0;
-    
+    int size_v = count(v);
     /* Difference between each value and mean is squared and added to
      * sum_of_squares
      */
-    for (int i = 0; i < v.size(); ++i) {
+    for (int i = 0; i < size_v; ++i) {
         double square1 = pow((v[i] - average), 2);
         sum_of_squares += square1;
     }
