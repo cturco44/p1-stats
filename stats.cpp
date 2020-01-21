@@ -15,6 +15,7 @@ using namespace std;
 
 vector<vector<double> > summarize(vector<double> v) {
     //outer vector that will be returned by the function
+    //outer vector that will be returned by the function
     vector<vector<double> > outer(0);
     int size = count(v);
     int total = 0;
@@ -98,6 +99,8 @@ vector<vector<double> > summarize(vector<double> v) {
         
     }
     return outer;
+
+
 
 }
 int count(vector<double> v) {
