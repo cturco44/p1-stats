@@ -45,7 +45,7 @@ void test_percentile();
 
 int main()
 {
-    cout << "starting all tests (main)" << endl;
+    cout << "starting all tests (main) valgrind3" << endl;
     //test_sum_small_data_set();
     test_summarize();
     test_count();
