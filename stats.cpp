@@ -81,13 +81,11 @@ vector<vector<double> > summarize(vector<double> v) {
             2. v[k] is greater than the old_smallest
             3. v[k] is less than smallest
          */
+        
         for (int m = 0; m < size; ++m) {
-            if (abs(v[m] - old_smallest) > epsilon) {
-                if (v[m] > old_smallest) {
-                    if (v[m] < smallest) {
-                        smallest = v[m];
-                    }
-                }
+            if ((abs(v[m] - old_smallest) > epsilon) && (v[m] > old_smallest)
+                && (v[m] < smallest)) {
+                smallest = v[m];
             }
         }
         /* If total is equal to the size of the vector, the function is done,
