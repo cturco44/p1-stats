@@ -208,6 +208,10 @@ double stdev(vector<double> v) {
 
 double percentile(vector<double> v, double p) {
     // Vector is sorted and n, k, and d are calculated
+    const double epsilon = 0.00001;
+    if (abs(p - 1) < epsilon) {
+        return max(v);
+    }
     sort(v);
     double n = (p * (v.size() - 1)) + 1;
     double k = floor(n);

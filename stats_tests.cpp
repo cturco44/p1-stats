@@ -204,9 +204,9 @@ void test_sum() {
 }
 void test_count() {
     vector<double> v(3);
-    v[1] = 3.2;
-    v[2] = 4.6;
-    v[3] = 5;
+    v[0] = 3.2;
+    v[1] = 4.6;
+    v[2] = 5;
     
     cout << "testing count" << endl;
     assert(count(v) == 3);
