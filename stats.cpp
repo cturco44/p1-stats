@@ -30,7 +30,7 @@ vector<vector<double> > summarize(vector<double> v) {
     
     for (int j = 0; j < size; ++j) {
         vector<double> holder(2);
-        while(abs(v[i] - num_holder) < epsilon) {
+        while((abs(v[i] - num_holder) < epsilon) && (i < size)) {
               ++frequency;
               ++i;
         }
