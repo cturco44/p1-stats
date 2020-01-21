@@ -16,10 +16,14 @@
 
 
 #include "stats.h"
+#include "p1_library.h"
 #include <iostream>
+#include <string>
 #include <cassert>
 #include <vector>
 #include <cmath>
+#include <iomanip>
+#include <limits>
 using namespace std;
 
 bool value_same(double a, double b);
