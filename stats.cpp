@@ -15,68 +15,90 @@ using namespace std;
 
 vector<vector<double> > summarize(vector<double> v) {
     //outer vector that will be returned by the function
-    vector<vector<double> > outer;
-    
-    double maximum = max(v);
-    const double epsilon = 0.00001;
-    int frequency = 0;
-    int total_frequency = 0;
+    vector<vector<double> > outer(0);
     int size = count(v);
-    sort(v);
+    int total = 0;
+    double smallest = v[0];
+    double largest = v[0];
+    const double epsilon = 0.00001;
+    int count_of_value = 0;
     
+    //finds the smallest value in the vector v.
+    for (int i = 0; i < size; ++i) {
+        if (v[i] < smallest) {
+            smallest = v[i];
+        }
+    }
+    //finds the largest value in the vector v.
+    for (int i = 0; i < size; ++i) {
+        if (v[i] > largest) {
+            largest = v[i];
+        }
+    }
     
-    double num_holder = v[0];
-    int i = 0;
     
     for (int j = 0; j < size; ++j) {
-        vector<double> holder(2);
-        while((abs(v[i] - num_holder) < epsilon) && (i < size)) {
-              ++frequency;
-              ++i;
+        
+        for (int i = 0; i < size; ++i) {
+               
+               /* checks if values are equal (must use epsilon
+                * because double comparison. If they are equal
+                * count (frequency) increases by one.
+                */
+               if (abs(smallest - v[i]) < epsilon) {
+                   ++count_of_value;
+               }
+               
+               
+           }
+        /* creates inner vector and fills it with
+         * (value, frequency) pairs. */
+        vector<double> inner(2);
+        inner[0] = smallest;
+        inner[1] = static_cast<double>(count_of_value);
+        
+        outer.push_back(inner);
+        
+        /* old_smallest value is set to equal the smallest value
+         * before smallest is changed. Total is updated so that the
+         * function will know when to terminate
+         */
+        double old_smallest = smallest;
+        total += count_of_value;
+        count_of_value = 0;
+        
+        //finds any value in v that is larger than the last smallest value
+        for (int k = 0; k < size; k++) {
+            if ((abs(v[k] - old_smallest) > epsilon) && (v[k] > old_smallest)) {
+                smallest = v[k];
+            }
+            
         }
-        holder[0] = num_holder;
-        holder[1] = frequency;
-        frequency = 0;
-        total_frequency += frequency;
-        outer.push_back(holder);
-        if (abs(holder[0] - maximum) < epsilon) {
+        /* This for loop finds the next smallest value by making sure v[m]
+         * satisfies the following 3 conditions:
+            1. v[k] is a different number than the old_smallest
+            2. v[k] is greater than the old_smallest
+            3. v[k] is less than smallest
+         */
+        for (int m = 0; m < size; ++m) {
+            if (abs(v[m] - old_smallest) > epsilon) {
+                if (v[m] > old_smallest) {
+                    if (v[m] < smallest) {
+                        smallest = v[m];
+                    }
+                }
+            }
+        }
+        /* If total is equal to the size of the vector, the function is done,
+         * so it returns the vector outer.
+         */
+        if (total == size) {
             return outer;
         }
         
-        vector<double> unused;
-        for (int k = 0; k < size; ++k) {
-            
-            if ((abs(v[k] - num_holder) > epsilon) && v[k] > num_holder) {
-                unused.push_back(v[k]);
-            }
-        }
-        
-        num_holder = min(unused);
-        
-        
     }
-    
     return outer;
-}
 
-int count(vector<double> v) {
-    
-    // v.size is casted to an int and returned.
-    int size = static_cast<int>(v.size());
-    return size;
-}
-
-double sum(vector<double> v) {
-    double sum = 0;
-    double size = count(v);
-    
-    /* A for loop is used to iterate over vector and increase sum by each value
-     * in the vector
-     */
-    for (int i = 0; i < size; ++i) {
-        sum += v[i];
-    }
-    return sum;
 }
 
 
@@ -208,8 +230,13 @@ double stdev(vector<double> v) {
 
 double percentile(vector<double> v, double p) {
     // Vector is sorted and n, k, and d are calculated
+    const double epsilon = 0.00001;
+    if (abs(p - 1.0) < epsilon) {
+        return max(v);
+    }
     sort(v);
-    double n = (p * (v.size() - 1)) + 1;
+    int size = count(v);
+    double n = (p * (size - 1)) + 1;
     double k = floor(n);
     double d = n - k;
     
